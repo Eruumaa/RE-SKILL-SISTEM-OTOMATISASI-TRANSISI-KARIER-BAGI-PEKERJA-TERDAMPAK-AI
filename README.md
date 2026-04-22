@@ -73,3 +73,6 @@ Jalankan program via terminal:
 ```
 Bash./reskill
 ```
+---
+
+<p align="center">Made with ❤️ and C</p>
