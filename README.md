@@ -68,11 +68,12 @@ graph TD
     N --> B
 ```
 👥 Tim Pengembang (The Dream Team)Proyek ini dikembangkan untuk memenuhi Praktikum Struktur Data & Algoritma, Universitas Syiah Kuala (2026).
-Nama,NIM,Role / Jobdesc
-Muhammad Aqil Mubarak,250810701100003,System Architecture & Documentation
-Muhammad Rauyan,250810701100048,Presentation & Logic Design
-Faiz Asra,250810701100062,Data Structure Implementation
-Mohd Rian Maulana,250810701100082,Algorithm Optimization
+| Nama | NIM | Role / Jobdesc |
+| :--- | :--- | :--- |
+| **Muhammad Aqil Mubarak** | `250810701100003` | System Architecture & Documentation |
+| **Muhammad Rauyan** | `250810701100048` | Presentation & Logic Design |
+| **Faiz Asra** | `250810701100062` | Data Structure Implementation |
+| **Mohd Rian Maulana** | `250810701100082` | Algorithm Optimization |
 
 🛠️ Cara Menjalankan Program (How to Run)
 Pastikan Anda memiliki compiler C yang terinstal di sistem operasi Anda.
