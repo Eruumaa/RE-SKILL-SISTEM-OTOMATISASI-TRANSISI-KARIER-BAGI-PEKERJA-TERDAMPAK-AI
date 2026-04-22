@@ -46,27 +46,11 @@ Aplikasi beroperasi melalui *Command Line Interface* (CLI) dengan alur interaksi
    * Diulang hingga *Skill Gap* terpenuhi.
 5. **Output Akhir:** Cetak daftar urutan *Learning Path* yang personal dan efisien ke layar terminal.
 
-### 📊 Diagram Alur (Mermaid)
-*(Note: GitHub secara otomatis akan merender kode di bawah ini menjadi diagram alur yang interaktif!)*
+### 📊 Diagram Alur (Bagan Draw.io)
+*(Note: Bagan alur ini dirancang menggunakan Draw.io dan ditampilkan sebagai file gambar.)*
 
-```mermaid
-graph TD
-    A[Mulai: Load BST & Graph] --> B[Menu Utama CLI]
-    B --> C[Asesmen 5 Pertanyaan Fundamental]
-    C --> D[Kalkulasi: Poin Bawaan]
-    D --> E[Input Profesi Target]
-    E --> F[Binary Search di BST]
-    F --> G{Hitung Skill Gap}
-    G -- Gap > 0 --> H[Kahn's Algo: Cari Kursus Bebas Syarat]
-    H --> I[Push ke Max-Heap]
-    I --> J[Greedy: Extract-Max]
-    J --> K[Simpan ke Learning Path]
-    K --> L[Update Graph & Buka Kursus Baru]
-    L --> M{Skill Gap Terpenuhi?}
-    M -- Belum --> J
-    M -- Sudah --> N[Cetak Daftar Learning Path]
-    N --> B
-```
+![Bagan Alur Re-Skill](Assets/Reskill.drawio.png)
+
 👥 Tim pengembang proyek ini dikembangkan untuk memenuhi Praktikum Struktur Data & Algoritma, Universitas Syiah Kuala (2026).
 | Nama | NIM | Role / Jobdesc |
 | :--- | :--- | :--- |
