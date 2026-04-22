@@ -12,7 +12,7 @@
 Proyek ini merupakan bentuk kontribusi nyata terhadap **Sustainable Development Goals (SDGs) Nomor 8**: *Pekerjaan Layak dan Pertumbuhan Ekonomi*, dengan memastikan terciptanya tenaga kerja yang adaptif dan inklusif di era revolusi industri baru.
 
 ## 👥 Tim pengembang 
-proyek ini dikembangkan untuk memenuhi Praktikum Struktur Data & Algoritma, Universitas Syiah Kuala (2026).
+Proyek ini dikembangkan untuk memenuhi Praktikum Struktur Data & Algoritma, Universitas Syiah Kuala (2026).
 | Nama | NIM | Role / Jobdesc |
 | :--- | :--- | :--- |
 | **Muhammad Aqil Mubarak** | `250810701100003` | System Architecture & Documentation |
