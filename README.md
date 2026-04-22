@@ -7,7 +7,7 @@
 ![Status](https://img.shields.io/badge/Status-Prototype-orange.svg)
 
 ## 📌 Deskripsi Proyek
-**Re-Skill** adalah sistem kalkulator transisi karier deterministik yang dirancang khusus untuk membantu pekerja terdampak Pemutusan Hubungan Kerja (PHK) akibat otomatisasi AI. Sistem ini memetakan keterampilan bawaan pengguna dan merumuskan jalur pembelajaran ulang (*reskilling*) yang paling efisien menuju profesi baru yang kebal otomatisasi.
+**Re-Skill** adalah sistem kalkulator transisi karier deterministik yang dirancang khusus untuk membantu pekerja terdampak Pemutusan Hubungan Kerja (PHK) akibat otomatisasi AI. Sistem ini memetakan keterampilan bawaan pengguna dan merumuskan jalur pembelajaran ulang (*reskilling*) yang paling efisien menuju profesi baru yang kebal terhadap otomatisasi.
 
 Proyek ini merupakan bentuk kontribusi nyata terhadap **Sustainable Development Goals (SDGs) Nomor 8**: *Pekerjaan Layak dan Pertumbuhan Ekonomi*, dengan memastikan terciptanya tenaga kerja yang adaptif dan inklusif di era revolusi industri baru.
 
@@ -17,8 +17,8 @@ Proyek ini merupakan bentuk kontribusi nyata terhadap **Sustainable Development 
 
 ### 🚨 Masalah (The Problem)
 * **Disrupsi AI:** Otomatisasi menghapus jutaan lapangan pekerjaan administratif dan teknis tingkat dasar.
-* **Kesenjangan Keterampilan (*Skill Gap*):** Korban PHK seringkali memiliki keterampilan terpendam (*transferable skills*), namun kebingungan memetakan keterampilan tersebut ke profesi baru.
-* **Pelatihan Tidak Efisien:** Program pelatihan massal seringkali memaksa pekerja belajar dari nol, membuang waktu dan biaya ekonomi.
+* **Kesenjangan Keterampilan (*Skill Gap*):** Korban PHK sering kali memiliki keterampilan terpendam (*transferable skills*), namun kebingungan memetakan keterampilan tersebut ke profesi baru.
+* **Pelatihan Tidak Efisien:** Program pelatihan massal sering kali memaksa pekerja belajar dari nol, membuang waktu dan biaya ekonomi.
 
 ### ✨ Solusi (The Solution)
 **Re-Skill** hadir sebagai "Jaring Pengaman Karier" berbasis komputasi algoritmik. Melalui asesmen singkat, sistem mengkalkulasi modal *Skill Points* (SP) pengguna. Alih-alih mencocokkan secara pasif, Re-Skill menggunakan algoritma optimasi tingkat lanjut untuk menyusun kurikulum transisi karier tercepat, sehingga pengguna hanya perlu mempelajari materi yang menjadi kekurangan (gap) mereka saja.
@@ -67,7 +67,7 @@ graph TD
     M -- Sudah --> N[Cetak Daftar Learning Path]
     N --> B
 ```
-👥 Tim Pengembang (The Dream Team)Proyek ini dikembangkan untuk memenuhi Praktikum Struktur Data & Algoritma, Universitas Syiah Kuala (2026).
+👥 Tim pengembang proyek ini dikembangkan untuk memenuhi Praktikum Struktur Data & Algoritma, Universitas Syiah Kuala (2026).
 | Nama | NIM | Role / Jobdesc |
 | :--- | :--- | :--- |
 | **Muhammad Aqil Mubarak** | `250810701100003` | System Architecture & Documentation |
@@ -77,7 +77,10 @@ graph TD
 
 🛠️ Cara Menjalankan Program (How to Run)
 Pastikan Anda memiliki compiler C yang terinstal di sistem operasi Anda.
-Clone repositori ini: Bashgit clone [https://github.com/username-kalian/RE-SKILL-SISTEM-OTOMATISASI-TRANSISI-KARIER.git](https://github.com/username-kalian/RE-SKILL-SISTEM-OTOMATISASI-TRANSISI-KARIER.git)
+Clone repositori ini: 
+```
+Bashgit clone [https://github.com/username-kalian/RE-SKILL-SISTEM-OTOMATISASI-TRANSISI-KARIER.git](https://github.com/username-kalian/RE-SKILL-SISTEM-OTOMATISASI-TRANSISI-KARIER.git)
+```
 Lakukan kompilasi source code utama:
 ```
 Bashgcc main.c -o reskill
