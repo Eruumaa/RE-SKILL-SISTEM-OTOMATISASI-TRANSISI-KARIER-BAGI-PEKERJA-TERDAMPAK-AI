@@ -11,6 +11,14 @@
 
 Proyek ini merupakan bentuk kontribusi nyata terhadap **Sustainable Development Goals (SDGs) Nomor 8**: *Pekerjaan Layak dan Pertumbuhan Ekonomi*, dengan memastikan terciptanya tenaga kerja yang adaptif dan inklusif di era revolusi industri baru.
 
+👥 Tim pengembang proyek ini dikembangkan untuk memenuhi Praktikum Struktur Data & Algoritma, Universitas Syiah Kuala (2026).
+| Nama | NIM | Role / Jobdesc |
+| :--- | :--- | :--- |
+| **Muhammad Aqil Mubarak** | `250810701100003` | System Architecture & Documentation |
+| **Muhammad Rauyan** | `250810701100048` | Presentation & Logic Design |
+| **Faiz Asra** | `250810701100062` | Data Structure Implementation |
+| **Mohd Rian Maulana** | `250810701100082` | Algorithm Optimization |
+
 ---
 
 ## 🛑 Masalah & 💡 Solusi
@@ -50,14 +58,6 @@ Aplikasi beroperasi melalui *Command Line Interface* (CLI) dengan alur interaksi
 *(Note: Bagan alur ini dirancang menggunakan Draw.io dan ditampilkan sebagai file gambar.)*
 
 ![Bagan Alur Re-Skill](Assets/Reskill.drawio.png)
-
-👥 Tim pengembang proyek ini dikembangkan untuk memenuhi Praktikum Struktur Data & Algoritma, Universitas Syiah Kuala (2026).
-| Nama | NIM | Role / Jobdesc |
-| :--- | :--- | :--- |
-| **Muhammad Aqil Mubarak** | `250810701100003` | System Architecture & Documentation |
-| **Muhammad Rauyan** | `250810701100048` | Presentation & Logic Design |
-| **Faiz Asra** | `250810701100062` | Data Structure Implementation |
-| **Mohd Rian Maulana** | `250810701100082` | Algorithm Optimization |
 
 🛠️ Cara Menjalankan Program (How to Run)
 Pastikan Anda memiliki compiler C yang terinstal di sistem operasi Anda.
