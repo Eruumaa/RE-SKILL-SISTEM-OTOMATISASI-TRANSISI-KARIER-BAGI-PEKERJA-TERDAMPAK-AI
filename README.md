@@ -66,3 +66,18 @@ graph TD
     M -- Belum --> J
     M -- Sudah --> N[Cetak Daftar Learning Path]
     N --> B
+```
+👥 Tim Pengembang (The Dream Team)Proyek ini dikembangkan untuk memenuhi Praktikum Struktur Data & Algoritma, Universitas Syiah Kuala (2026).
+NamaNIMRole / JobdescMuhammad Aqil Mubarak250810701100003 System Architecture & DocumentationMuhammad Rauyan250810701100048Presentation & Logic DesignFaiz Asra250810701100062Data Structure ImplementationMohd Rian Maulana250810701100082Algorithm Optimization
+
+🛠️ Cara Menjalankan Program (How to Run)
+Pastikan Anda memiliki compiler C yang terinstal di sistem operasi Anda.
+Clone repositori ini: Bashgit clone [https://github.com/username-kalian/RE-SKILL-SISTEM-OTOMATISASI-TRANSISI-KARIER.git](https://github.com/username-kalian/RE-SKILL-SISTEM-OTOMATISASI-TRANSISI-KARIER.git)
+Lakukan kompilasi source code utama:
+```
+Bashgcc main.c -o reskill
+```
+Jalankan program via terminal:
+```
+Bash./reskill
+```
