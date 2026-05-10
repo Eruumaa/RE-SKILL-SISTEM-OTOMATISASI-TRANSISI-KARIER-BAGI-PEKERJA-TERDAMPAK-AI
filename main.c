@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Deklarasi Kode Warna ANSI
 #define RESET   "\033[0m"
 #define BOLD    "\033[1m"
 #define RED     "\033[31m"
@@ -13,7 +12,6 @@
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
 
-// Fungsi untuk membersihkan layar terminal (Multi-OS)
 void clearScreen() {
     #ifdef _WIN32
         system("cls");
@@ -22,7 +20,6 @@ void clearScreen() {
     #endif
 }
 
-// Fungsi untuk menampilkan ASCII Art Logo
 void printLogo() {
     printf(CYAN BOLD);
     printf("  ____  _____          _____ _  _____ _     _     \n");
@@ -61,8 +58,8 @@ int main() {
                 printf(YELLOW "[!] Fitur struktur data BST akan diintegrasikan di sini.\n" RESET);
                 
                 printf("\nTekan Enter untuk kembali...");
-                getchar(); // Membersihkan buffer
-                getchar(); // Menunggu input enter
+                getchar();
+                getchar(); 
                 break;
                 
             case 2:
@@ -112,11 +109,11 @@ int main() {
                 
                 printf(CYAN "Tahap 2: Pemilihan Profesi Target\n" RESET);
                 printf("Ketik profesi target (contoh: Analis): ");
-                getchar(); // Clear buffer
+                getchar();
                 fgets(profesi, 50, stdin);
-                profesi[strcspn(profesi, "\n")] = 0; // Hapus newline
+                profesi[strcspn(profesi, "\n")] = 0;
                 
-                // Asumsi dummy target = 100 SP
+                // Asumsi target = 100 SP
                 int targetSP = 100;
                 int skillGap = targetSP - poinBawaan;
                 
