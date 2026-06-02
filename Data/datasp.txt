@@ -1,0 +1,259 @@
+[PROFESI_TARGET]
+P001,Arsitek dan Surveyor,125
+P002,Insinyur Biokimia,135
+P003,Insinyur Biomedis,135
+P004,Insinyur Kimia,130
+P005,Insinyur Sipil,120
+P006,Insinyur Elektroteknologi,130
+P007,Insinyur Energi dan Perminyakan,125
+P008,Insinyur Lingkungan,125
+P009,Insinyur Industri dan Produksi,125
+P010,Insinyur Material,130
+P011,Insinyur Mekanik,125
+P012,Insinyur Pertambangan dan Ahli Metalurgi,120
+P013,Insinyur Sistem Nano,140
+P014,Insinyur Nuklir,140
+P015,Insinyur Fotonik,135
+P016,Insinyur Energi Terbarukan,130
+P017,Insinyur Robotika,145
+P018,Spesialis Teknis,110
+P019,Profesional Periklanan dan Hubungan Masyarakat,115
+P020,Atlet dan Pesaing Olahraga,90
+P021,Penulis dan Jurnalis,105
+P022,Desainer Komersial dan Industri,115
+P023,Seniman Kreatif dan Pertunjukan,100
+P024,Desainer Fesyen,105
+P025,Desainer Grafis,110
+P026,Pengrajin Tangan,90
+P027,Desainer Interior,105
+P028,Fotografer,95
+P029,Teknisi Telekomunikasi dan Penyiaran,110
+P030,Akuntan dan Auditor,120
+P031,Analis Intelijen Bisnis,125
+P032,Pemeriksa Klaim dan Penyelidik,110
+P033,Petugas Kepatuhan,115
+P034,Petugas Kredit dan Pinjaman,110
+P035,Spesialis Pemasaran Digital dan Strategi,120
+P036,Spesialis Transformasi Digital,125
+P037,Spesialis E-commerce,115
+P038,Analis Keuangan,120
+P039,Penasihat Keuangan dan Investasi,125
+P040,Spesialis Sumber Daya Manusia,115
+P041,Penjamin Emisi Asuransi,115
+P042,Manajer Reksa Dana,130
+P043,Analis Organisasi dan Manajemen,125
+P044,Manajer Produk,130
+P045,Manajer Proyek,125
+P046,Perekrut dan Perekrut Teknis,110
+P047,Profesional Asosiasi Peraturan dan Pemerintah,120
+P048,Manajer Hubungan,115
+P049,Spesialis Manajemen Risiko,125
+P050,Profesional Penjualan dan Pemasaran,115
+P051,Strategis Media Sosial,110
+P052,Spesialis Pelatihan dan Pengembangan,115
+P053,Penilai dan Penaksir Kerugian,110
+P054,Pemadam Kebakaran,90
+P055,Inspektur Imigrasi dan Bea Cukai,95
+P056,Petugas Polisi,90
+P057,Profesional Keagamaan,90
+P058,Profesional Pekerjaan Sosial dan Konseling,110
+P059,Spesialis AI dan Machine Learning,150
+P060,Pengembang Aplikasi,135
+P061,Spesialis Big Data,140
+P062,Pengembang Blockchain,135
+P063,Analis dan Ilmuwan Data,140
+P064,Insinyur Data,135
+P065,Spesialis Data Warehousing,130
+P066,Profesional Basis Data dan Jaringan,130
+P067,Arsitek Basis Data,135
+P068,Insinyur DevOps,140
+P069,Insinyur FinTech,135
+P070,Insinyur Full Stack,140
+P071,Ilmuwan dan Teknolog Informasi Geospasial,130
+P072,Teknisi Operasi ICT dan Dukungan Pengguna,110
+P073,Analis Keamanan Informasi,140
+P074,Spesialis Internet of Things,135
+P075,Matematikawan Aktuaris dan Ahli Statistik,135
+P076,Manajer Pembelajaran Online,120
+P077,Pengembang Perangkat Lunak dan Aplikasi,135
+P078,Penguji Perangkat Lunak,120
+P079,Pengembang Web,125
+P080,Pekerja Penyelesaian Bangunan dan Terkait,85
+P081,Pekerja Kerangka Bangunan dan Terkait,90
+P082,Pekerja Konstruksi,80
+P083,Pemasang dan Reparasi Peralatan Listrik,95
+P084,Pustakawan Kurator dan Arsiparis,105
+P085,Guru Pendidikan Dasar dan Anak Usia Dini,110
+P086,Guru Pendidikan Menengah,115
+P087,Guru Pendidikan Luar Biasa,115
+P088,Guru Pendidikan Universitas dan Pendidikan Tinggi,125
+P089,Guru Pendidikan Vokasi,115
+P090,Operator Peralatan Pertanian,100
+P091,Inspektur Pertanian,105
+P092,Peternak Hewan,95
+P093,Penyortir dan Penilai Produk Pertanian,85
+P094,Audiolog dan Terapis Wicara,125
+P095,Psikolog Klinis dan Konseling,130
+P096,Dokter Gigi dan Profesi Terkait,135
+P097,Ahli Diet dan Ahli Gizi,120
+P098,Profesional Kesehatan dan Kebersihan Lingkungan dan Kerja,125
+P099,Pakar Epidemiologi dan Spesialis Kesehatan Masyarakat,135
+P100,Praktisi Medis Umum,140
+P101,Teknisi Prostetik Medis dan Gigi,110
+P102,Teknisi Medis Farmasi dan Laboratorium,115
+P103,Profesional Kebidanan,115
+P104,Perawat Profesional,120
+P105,Spesialis dan Teknisi Kesehatan dan Keselamatan Kerja,115
+P106,Optometris dan Ahli Kacamata,125
+P107,Teknisi Paramedis dan Medis Darurat,110
+P108,Apoteker dan Profesi Terkait,130
+P109,Terapis Fisik,120
+P110,Psikiater,145
+P111,Dokter Spesialis Medis,150
+P112,Profesional Pengobatan Tradisional dan Komplementer,110
+P113,Dokter Hewan,130
+P114,Manajer Acara,110
+P115,Barista,80
+P116,Koki dan Juru Masak,95
+P117,Concierge dan Resepsionis Hotel,85
+P118,Manajer Hotel dan Restoran,115
+P119,Pemandu Wisata dan Perjalanan,90
+P120,Pemasang dan Reparasi Elektronik dan Telekomunikasi,105
+P121,Pemasang dan Reparasi Peralatan Rumah Tangga,95
+P122,Mekanik dan Reparasi Mesin,105
+P123,Hakim Hukum Administrasi dan Pejabat Sidang,135
+P124,Arbiter Mediator dan Konsiliator,125
+P125,Pelapor Pengadilan,95
+P126,Hakim dan Pejabat Hukum,140
+P127,Panitera Hukum,110
+P128,Pengacara,135
+P129,Pemeriksa Hak Milik dan Pencari Abstrak,105
+P130,Manajer Layanan Bisnis dan Administrasi,125
+P131,Manajer Umum dan Operasi,130
+P132,Manajer Layanan Kesehatan dan Pendidikan,125
+P133,Legislator dan Pejabat,130
+P134,Direktur Pelaksana dan Kepala Eksekutif,150
+P135,Manajer Manufaktur Pertambangan Konstruksi dan Distribusi,130
+P136,Spesialis Pengembangan Organisasi,125
+P137,Manajer Produksi Pertanian Kehutanan dan Perikanan,120
+P138,Penasihat Strategis,135
+P139,Teknisi Biofuel dan Biomassa,115
+P140,Operator Pabrik Pengolahan Kimia,105
+P141,Tukang Listrik Pekerja Isolasi dan Tukang Ledeng,100
+P142,Teknisi Geotermal,115
+P143,Teknisi Pembangkit Listrik Tenaga Air,115
+P144,Operator Pabrik Penyulingan Minyak dan Gas Alam,110
+P145,Operator Pembangkit Listrik,110
+P146,Pekerja Lembaran Logam Struktural Pengecoran dan Pengelasan,95
+P147,Insinyur Pemasangan Sistem dan Energi Surya,120
+P148,Insinyur Energi Angin,125
+P149,Spesialis Operasi Taktis Militer dan Anggota Awak Senjata Udara,120
+P150,Pemimpin Operasi Khusus dan Taktis Perwira Militer,130
+P151,Biolog dan Ahli Genetika,135
+P152,Ahli Botani Ahli Zoologi dan Terkait,130
+P153,Ahli Kimia dan Ilmuwan Laboratorium Kimia,130
+P154,Profesional Perlindungan Lingkungan,125
+P155,Ilmuwan dan Teknolog Pangan,120
+P156,Ahli Geologi dan Geofisika,130
+P157,Ilmuwan Material,130
+P158,Fisikawan dan Astronom,140
+P159,Ilmuwan dan Teknolog Penginderaan Jauh,130
+P160,Spesialis Keberlanjutan,135
+P161,Ekonom,135
+P162,Filsuf Sejarawan dan Ilmuwan Politik,125
+P163,Psikolog Sosial,125
+P164,Asisten Penelitian Ilmu Sosial,110
+P165,Sosiolog Antropolog dan Terkait,125
+P166,Peneliti Survei,115
+P167,Perencana Kota dan Lalu Lintas,120
+P168,Spesialis Kendaraan Otonom dan Listrik,135
+P169,Pilot Komersial,130
+P170,Pialang Bea Cukai,110
+P171,Pramugari,95
+P172,Pengemudi Truk Berat dan Bus,90
+P173,Pengemudi Truk Ringan dan Layanan Pengiriman,85
+P174,Masinis Lokomotif dan Terkait,100
+P175,Pelaut dan Pekerja Kargo Laut,90
+P176,Pengontrol dan Teknisi Kapal dan Pesawat,120
+P177,Kapten Kapal dan Perahu,115
+P178,Spesialis Rantai Pasokan dan Logistik,120
+P179,Inspektur Transportasi,105
+P180,Agen Penjualan Real Estat,100
+P181,Agen dan Pialang Penjualan dan Pembelian,105
+P182,Perwakilan Penjualan Grosir dan Manufaktur,110
+P183,Pialang Sekuritas dan Keuangan,115
+
+[KURSUS_KETERAMPILAN]
+0,Pemikiran Analitis,20,NONE
+1,Pemikiran Kreatif,20,NONE
+2,Ketahanan Fleksibilitas dan Kelincahan,15,NONE
+3,Motivasi dan Kesadaran Diri,15,NONE
+4,Rasa Ingin Tahu dan Pembelajaran Sepanjang Hayat,15,NONE
+5,Literasi Teknologi,15,NONE
+6,Keandalan dan Perhatian terhadap Detail,15,NONE
+7,Empati dan Mendengarkan Aktif,15,NONE
+8,Kepemimpinan dan Pengaruh Sosial,20,7
+9,Kontrol Kualitas,15,0
+10,Pemikiran Sistem,20,0;1
+11,Manajemen Bakat,20,8
+12,Orientasi Layanan dan Pelanggan,15,7
+13,Manajemen Sumber Daya dan Operasi,20,0;9
+14,AI dan Big Data,35,5;19
+15,Membaca Menulis dan Matematika,10,NONE
+16,Desain dan Pengalaman Pengguna,25,1;5
+17,Multilingualisme,15,NONE
+18,Pengajaran dan Pendampingan,20,7;8
+19,Pemrograman,30,5;15
+20,Pemasaran dan Media,20,1;16
+21,Jaringan dan Keamanan Siber,30,5;19
+22,Pemeliharaan Lingkungan,20,10
+23,Ketangkasan Manual Daya Tahan dan Presisi,10,NONE
+24,Kewarganegaraan Global,15,4
+25,Kemampuan Pemrosesan Sensorik,10,NONE
+
+[PROFESI_TERDAMPAK]
+T001,Pegawai Akuntansi Pembukuan dan Penggajian,45
+T002,Sekretaris Administratif dan Eksekutif,45
+T003,Teller Bank dan Pegawai Terkait,40
+T004,Pekerja Informasi Klien dan Layanan Pelanggan,35
+T005,Pegawai Entri Data,45
+T006,Pegawai Pencatat Material dan Penyimpan Stok,35
+T007,Pegawai Layanan Pos,35
+T008,Pegawai Statistik Keuangan dan Asuransi,35
+T009,Pekerja Perakitan dan Pabrik,30
+T010,Kasir dan Petugas Tiket,30
+T011,Pekerja Penjualan dari Pintu ke Pintu dan PKL,25
+T012,Telemarketer,35
+T013,Pramuniaga Toko,30
+T014,Operator Pusat Panggilan (Call Center),30
+T015,Pengurus Gedung dan Asisten Rumah Tangga,20
+T016,Pekerja Perawatan Hewan dan Layanan,25
+T017,Pekerja Layanan Pemakaman,25
+T018,Pekerja Pencuci Kendaraan Jendela Binatu,20
+T019,Penjaga Penjara,25
+T020,Satuan Pengamanan,25
+T021,Pekerja Bahan Peledak dan Penanganan Persenjataan,35
+T022,Pekerja Ekstraksi Pertambangan dan Perminyakan,30
+T023,Operator Pabrik Pertambangan dan Perminyakan,30
+T024,Pekerja Logam dan Baja,30
+T025,Pekerja Percetakan dan Terkait,25
+T026,Pekerja Pengolahan Makanan dan Terkait,25
+T027,Pekerja Garmen dan Terkait,25
+T028,Pekerja Pertanian dan Buruh Tani,20
+T029,Nelayan dan Pekerja Perikanan,20
+T030,Pekerja Kehutanan dan Konservasi,25
+T031,Pemburu dan Pemasang Perangkap,25
+T032,Operator Peralatan Penebangan,30
+T033,Pekerja Pembibitan dan Rumah Kaca,20
+T034,Pelayan Konter Makanan,20
+T035,Pelayan dan Bartender,25
+T036,Asisten Penyiapan Makanan,20
+T037,Mekanik Kendaraan dan Peralatan Bergerak,35
+T038,Pengemudi Mobil Van dan Sepeda Motor,25
+T039,Petugas Transportasi dan Kondektur,25
+T040,Pekerja Layanan Sampah,15
+T041,Paralegal dan Asisten Hukum,40
+T042,Sekretaris Hukum,40
+T043,Petugas Penimbang Pengukur Pengecek dan Pencatat,35
+T044,Asisten Terapi Okupasi dan Terapis Fisik,35
+T045,Asisten Perawatan Pribadi,25
