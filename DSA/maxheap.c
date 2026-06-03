@@ -95,3 +95,37 @@ HeapElement extractMax(MaxHeap* heap) {
     return root;
 }
 
+// Membersihkan dan membebaskan alokasi memori dinamis heap demi mencegah memory leak
+void freeMaxHeap(MaxHeap* heap) {
+    if (heap != NULL) {
+        free(heap->data);
+        free(heap);
+    }
+}
+
+// Memeriksa apakah struktur antrean Max-Heap dalam kondisi kosong (O(1))
+int isEmptyHeap(MaxHeap* heap) {
+    return (heap == NULL || heap->size == 0);
+}
+
+// Melihat elemen dengan prioritas nilai SP tertinggi di posisi root tanpa menghapusnya (O(1))
+HeapElement peekMax(MaxHeap* heap) {
+    if (isEmptyHeap(heap)) {
+        HeapElement empty = {-1, -1};
+        return empty;
+    }
+    return heap->data[0];
+}
+
+// Mencetak representasi linear array dari isi heap saat ini untuk keperluan penelusuran (O(n))
+void printHeap(MaxHeap* heap) {
+    if (isEmptyHeap(heap)) {
+        printf("Max-Heap Kosong.\n");
+        return;
+    }
+    printf("Status Heap Saat Ini (Size: %d): ", heap->size);
+    for (int i = 0; i < heap->size; i++) {
+        printf("[ID: %d | SP: %d] ", heap->data[i].course_id, heap->data[i].sp_value);
+    }
+    printf("\n");
+}
