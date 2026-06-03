@@ -20,3 +20,20 @@ void swapElements(HeapElement* a, HeapElement* b) {
     *b = temp;
 }
 
+// Mengalokasikan memori dinamis untuk struktur Max-Heap berdasarkan kapasitas maksimum
+MaxHeap* createMaxHeap(int capacity) {
+    MaxHeap* heap = (MaxHeap*)malloc(sizeof(MaxHeap));
+    if (heap == NULL) {
+        printf("[Error] Alokasi struktur Max-Heap gagal!\n");
+        exit(1);
+    }
+    heap->capacity = capacity;
+    heap->size = 0;
+    heap->data = (HeapElement*)malloc(capacity * sizeof(HeapElement));
+    if (heap->data == NULL) {
+        printf("[Error] Alokasi data elemen heap gagal!\n");
+        free(heap);
+        exit(1);
+    }
+    return heap;
+}
