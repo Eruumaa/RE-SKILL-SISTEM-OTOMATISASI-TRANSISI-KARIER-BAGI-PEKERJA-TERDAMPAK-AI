@@ -56,3 +56,21 @@ void maxHeapify(MaxHeap* heap, int idx) {
         maxHeapify(heap, largest);
     }
 }
+
+// Memasukkan elemen kursus baru yang lolos prasyarat Kahn's (In-Degree == 0) ke heap (O(log n))
+void insertHeap(MaxHeap* heap, int course_id, int sp_value) {
+    if (heap->size >= heap->capacity) {
+        printf("[Warning] Max-Heap penuh! Gagal melakukan insert untuk kursus %d.\n", course_id);
+        return;
+    }
+
+    int i = heap->size;
+    heap->data[i].course_id = course_id;
+    heap->data[i].sp_value = sp_value;
+    heap->size++;
+
+    while (i != 0 && heap->data[parent(i)].sp_value < heap->data[i].sp_value) {
+        swapElements(&heap->data[i], &heap->data[parent(i)]);
+        i = parent(i);
+    }
+}
