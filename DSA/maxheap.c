@@ -74,3 +74,24 @@ void insertHeap(MaxHeap* heap, int course_id, int sp_value) {
         i = parent(i);
     }
 }
+
+// Mengambil dan menghapus kursus dengan perolehan sp_value tertinggi dari Root (O(log n))
+HeapElement extractMax(MaxHeap* heap) {
+    if (heap->size <= 0) {
+        HeapElement empty = {-1, -1};
+        return empty;
+    }
+
+    if (heap->size == 1) {
+        heap->size--;
+        return heap->data[0];
+    }
+
+    HeapElement root = heap->data[0];
+    heap->data[0] = heap->data[heap->size - 1];
+    heap->size--;
+    maxHeapify(heap, 0);
+
+    return root;
+}
+
