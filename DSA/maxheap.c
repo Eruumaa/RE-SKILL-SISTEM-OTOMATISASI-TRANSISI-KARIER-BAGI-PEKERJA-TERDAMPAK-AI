@@ -37,3 +37,22 @@ MaxHeap* createMaxHeap(int capacity) {
     }
     return heap;
 }
+// Menjaga properti Max-Heap dari posisi akar (root) menuju ke bawah (O(log n))
+void maxHeapify(MaxHeap* heap, int idx) {
+    int largest = idx;
+    int left = leftChild(idx);
+    int right = rightChild(idx);
+
+    if (left < heap->size && heap->data[left].sp_value > heap->data[largest].sp_value) {
+        largest = left;
+    }
+
+    if (right < heap->size && heap->data[right].sp_value > heap->data[largest].sp_value) {
+        largest = right;
+    }
+
+    if (largest != idx) {
+        swapElements(&heap->data[idx], &heap->data[largest]);
+        maxHeapify(heap, largest);
+    }
+}
