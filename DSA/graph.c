@@ -67,7 +67,7 @@ void removeCourse(Graph* graph, int courseIndex) {
         int neighbor = temp->course_id;           // Menyimpan vertex tetangga
 
         if (graph->in_degree[neighbor] > 0) {
-            graph->in_degree[neighbor]--;
+            graph->in_degree[neighbor]--;       // Mengurangi in-degree tetangga
         }
 
         temp = temp->next;
@@ -83,14 +83,14 @@ void displayGraph(Graph* graph) {
 
         printf("%s (SP:%d) -> ",
                graph->courses[i].course_name,
-               graph->courses[i].sp_value);
+               graph->courses[i].sp_value);      // Menampilkan nama course dan nilai SP
 
-        CourseNode* temp = graph->adjList[i];
+        CourseNode* temp = graph->adjList[i];    // Mengambil adjacency list vertex i
 
         while (temp != NULL) {
 
             printf("%s ",
-                   graph->courses[temp->course_id].course_name);
+                   graph->courses[temp->course_id].course_name);     // Menampilkan course yang terhubung
 
             temp = temp->next;
         }
@@ -104,19 +104,21 @@ void freeGraph(Graph* graph) {
 
     for (int i = 0; i < graph->num_vertices; i++) {
 
-        CourseNode* current = graph->adjList[i];
+        CourseNode* current = graph->adjList[i];     // Mengambil head list
 
         while (current != NULL) {
 
-            CourseNode* temp = current;
-            current = current->next;
+            CourseNode* temp = current;          // Menyimpan node sementara
+            current = current->next;             // Pindah ke node berikutnya
+
 
             free(temp);
         }
     }
 
-    free(graph->courses);
-    free(graph->adjList);
-    free(graph->in_degree);
-    free(graph);
+    free(graph->courses);       // Membebaskan array course
+    free(graph->adjList);       // Membebaskan adjacency list
+    free(graph->in_degree);     // Membebaskan array in-degree
+    free(graph);                 // Membebaskan graph utama
 }
+
