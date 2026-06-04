@@ -13,3 +13,10 @@
 #define BLUE    "\033[34m"
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
+
+// Prototipe Fungsi Utility
+void clearScreen();
+void printLogo();
+void loadDataToSystem(P_Node* rootBST, GraphPtr graph);
+
+#endif // UTILS_H
