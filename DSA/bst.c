@@ -1,6 +1,6 @@
 #include "BST.h"
 
-// --- 1. Fungsi utilitas untuk membuat node baru ---
+// Fungsi utilitas untuk membuat node baru
 P_Node createNode(int id, char *name, int required_sp)
 {
     P_Node newNode = (P_Node)malloc(sizeof(ProfessionNode));
@@ -20,7 +20,7 @@ P_Node createNode(int id, char *name, int required_sp)
     return newNode;
 }
 
-// --- 2. Fungsi insertProfession ---
+// Fungsi insertProfession
 P_Node insertProfession(P_Node root, int id, char *name, int required_sp)
 {
     // Jika root kosong, buat node baru sebagai root
@@ -42,7 +42,7 @@ P_Node insertProfession(P_Node root, int id, char *name, int required_sp)
     return root;
 }
 
-// --- 3. Fungsi searchProfession ---
+//  Mencari node berdasarkan ID profesi
 P_Node searchProfession(P_Node root, int search_id)
 {
     if (root == NULL || root->id == search_id)
@@ -58,7 +58,64 @@ P_Node searchProfession(P_Node root, int search_id)
     return searchProfession(root->right, search_id);
 }
 
-// --- 4. Fungsi freeBST ---
+// Mencari node berdasarkan NAMA profesi
+P_Node searchProfessionByName(P_Node root, char *search_name)
+{
+    // Basis kasus: Jika pohon kosong, atau jika data tidak ditemukan
+    if (root == NULL)
+    {
+        return NULL;
+    }
+
+    // Periksa apakah nama node saat ini cocok dengan yang dicari (Case-Sensitive)
+    if (strcmp(root->name, search_name) == 0)
+    {
+        return root;
+    }
+
+    // Jika belum cocok, cari ke sub-pohon sebelah kiri
+    P_Node foundLeft = searchProfessionByName(root->left, search_name);
+    if (foundLeft != NULL)
+    {
+        return foundLeft; // Jika ditemukan di kiri, langsung kembalikan hasil
+    }
+
+    // Jika di kiri tidak ada, cari ke sub-pohon sebelah kanan
+    return searchProfessionByName(root->right, search_name);
+}
+
+// Menu cari Profesi
+void menuCariProfesi(P_Node root)
+{
+    char inputNama[100];
+
+    printf("\nMasukkan nama profesi target: ");
+    // Menggunakan scanf atau fgets untuk menerima input string ber-spasi
+    char format[20];
+    sprintf(format, "%%%ds", (int)sizeof(inputNama) - 1);
+    scanf(" %[^\n]s", inputNama);
+
+    // Memanggil fungsi tambahan yang baru dibuat
+    P_Node hasil = searchProfessionByName(root, inputNama);
+
+    if (hasil != NULL)
+    {
+        printf("\n============================================");
+        printf("\n Profesi Ditemukan!\n");
+        printf("ID Profesi   : %d\n", hasil->id);
+        printf("Nama Profesi : %s\n", hasil->name);
+        printf("Syarat SP    : %d\n", hasil->required_sp);
+        printf("============================================/n");
+    }
+    else
+    {
+        printf("===========================================================");
+        printf("\n Maaf, profesi '%s' tidak ditemukan dalam sistem.\n", inputNama);
+        printf("===========================================================\n");
+    }
+}
+
+// Fungsi freeBST
 void freeBST(P_Node root)
 {
     if (root != NULL)
@@ -69,7 +126,7 @@ void freeBST(P_Node root)
     }
 }
 
-// --- 5. Fungsi Otomatisasi Menyimpan Data Profesi ---
+// Fungsi Otomatisasi Menyimpan Data Profesi
 P_Node loadDefaultProfessions(P_Node root)
 {
     // ID 103 (nilai tengah) diletakkan di paling atas agar menjadi Root utama!
