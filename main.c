@@ -1,3 +1,6 @@
+#include "bst.h"
+#include "graph.h"
+#include "maxheap.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

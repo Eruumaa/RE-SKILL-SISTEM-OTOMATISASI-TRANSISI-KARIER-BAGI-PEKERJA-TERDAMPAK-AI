@@ -1,4 +1,6 @@
 #include "maxheap.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 // Fungsi utilitas matematika untuk mendapatkan indeks relasi pohon biner dalam array
 int parent(int idx)
@@ -17,7 +19,7 @@ int rightChild(int idx)
 }
 
 // Fungsi internal pembantu untuk menukar posisi dua elemen di dalam heap
-void swapElements(HeapelementPtr a, HeapelementPtr *b)
+void swapElements(HeapelementPtr a, HeapelementPtr b)
 {
     HeapElement temp = *a;
     *a = *b;

@@ -1,4 +1,7 @@
 #include "BST.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 // Fungsi utilitas untuk membuat node baru
 P_Node createNode(int id, char *name, int required_sp)
@@ -93,7 +96,7 @@ void menuCariProfesi(P_Node root)
     // Menggunakan scanf atau fgets untuk menerima input string ber-spasi
     char format[20];
     sprintf(format, "%%%ds", (int)sizeof(inputNama) - 1);
-    scanf(" %[^\n]s", inputNama);
+    scanf(" %[^\n]", inputNama);
 
     // Memanggil fungsi tambahan yang baru dibuat
     P_Node hasil = searchProfessionByName(root, inputNama);

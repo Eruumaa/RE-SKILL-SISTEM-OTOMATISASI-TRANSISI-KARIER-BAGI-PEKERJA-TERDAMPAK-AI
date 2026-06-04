@@ -1,9 +1,6 @@
 #ifndef MAXHEAP_H
 #define MAXHEAP_H
 
-#include <stdio.h>
-#include <stdlib.h>
-
 // Struktur Elemen Kursus di dalam Heap (Menyimpan ID Kursus dan Nilai Skill Points)
 typedef HeapElement *HeapelementPtr;
 typedef struct HeapElement
