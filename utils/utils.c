@@ -22,3 +22,10 @@ void printLogo() {
     printf(YELLOW "  Sistem Otomatisasi Transisi Karier Terdampak AI \n" RESET);
     printf("====================================================\n\n");
 }
+
+void loadDataToSystem(P_Node* rootBST, GraphPtr graph) {
+    FILE *file = fopen("Data/datasp.txt", "r");
+    if (file == NULL) {
+        printf(RED "[Error] Gagal memuat file Data/datasp.txt! Pastikan berada di folder yang benar.\n" RESET);
+        return;
+    }
