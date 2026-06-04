@@ -4,24 +4,25 @@
 #include "graph.h"
 
 // O(V)
-Graph* createGraph(int vertices) {
-    Graph* graph = (Graph*)malloc(sizeof(Graph));
+Graph* createGraph(int vertices) {                   // Membuat graph dengan jumlah vertex tertentu
+    Graph* graph = (Graph*)malloc(sizeof(Graph));    // Alokasi memori untuk struktur graph
 
-    graph->num_vertices = vertices;
+    graph->num_vertices = vertices;                  // Menyimpan jumlah vertex
 
-    graph->courses = (Course*)malloc(vertices * sizeof(Course));
+    graph->courses = (Course*)malloc(vertices * sizeof(Course));    // Alokasi array course
 
     graph->adjList = (CourseNode**)malloc(
-        vertices * sizeof(CourseNode*)
+        vertices * sizeof(CourseNode*)       // Alokasi adjacency list
     );
 
     graph->in_degree = (int*)calloc(
         vertices,
-        sizeof(int)
+        sizeof(int)          // Alokasi dan inisialisasi in-degree = 0
     );
 
     for (int i = 0; i < vertices; i++) {
-        graph->adjList[i] = NULL;
+        graph->adjList[i] = NULL;       // Setiap adjacency list diawali NULL
+
     }
 
     return graph;
@@ -35,9 +36,9 @@ void addCourse(
     const char* course_name,
     int sp_value
 ) {
-    graph->courses[index].course_id = course_id;
-    strcpy(graph->courses[index].course_name, course_name);
-    graph->courses[index].sp_value = sp_value;
+    graph->courses[index].course_id = course_id;            // Menyimpan ID mata kuliah
+    strcpy(graph->courses[index].course_name, course_name); // Menyalin nama mata kuliah
+    graph->courses[index].sp_value = sp_value;              // Menyimpan nilai SP/SKS        
 }
 
 // O(1)
@@ -46,24 +47,24 @@ void addEdge(Graph* graph, int u, int v) {
     CourseNode* newNode =
         (CourseNode*)malloc(sizeof(CourseNode));
 
-    newNode->course_id = v;
-    newNode->next = graph->adjList[u];
+    newNode->course_id = v;                  // Menyimpan vertex tujuan
+    newNode->next = graph->adjList[u];       // Menghubungkan ke node sebelumnya
 
-    graph->adjList[u] = newNode;
+    graph->adjList[u] = newNode;             // Node baru menjadi head adjacency list
 
     // update in-degree
-    graph->in_degree[v]++;
+    graph->in_degree[v]++;             // Menambah jumlah in-degree vertex tujuan
 }
 
 // O(out_degree(v))
 void removeCourse(Graph* graph, int courseIndex) {
 
     CourseNode* temp =
-        graph->adjList[courseIndex];
+        graph->adjList[courseIndex];          // Mengambil daftar tetangga vertex
 
     while (temp != NULL) {
 
-        int neighbor = temp->course_id;
+        int neighbor = temp->course_id;           // Menyimpan vertex tetangga
 
         if (graph->in_degree[neighbor] > 0) {
             graph->in_degree[neighbor]--;
