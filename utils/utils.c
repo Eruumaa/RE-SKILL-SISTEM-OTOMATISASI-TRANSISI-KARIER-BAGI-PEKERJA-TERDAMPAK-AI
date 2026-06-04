@@ -29,3 +29,26 @@ void loadDataToSystem(P_Node* rootBST, GraphPtr graph) {
         printf(RED "[Error] Gagal memuat file Data/datasp.txt! Pastikan berada di folder yang benar.\n" RESET);
         return;
     }
+    char line[256];
+    int mode = 0; // 1 = Profesi Target, 2 = Kursus Keterampilan
+
+    while (fgets(line, sizeof(line), file)) {
+        // Hapus karakter 'enter' (Linux/Windows) di akhir baris
+        line[strcspn(line, "\r\n")] = 0; 
+        
+        if (strlen(line) == 0) continue; // Skip baris kosong
+
+        // Cek label header untuk mengubah mode parsing
+        if (strstr(line, "[PROFESI_TARGET]")) { mode = 1; continue; }
+        if (strstr(line, "[KURSUS_KETERAMPILAN]")) { mode = 2; continue; }
+        if (strstr(line, "[PROFESI_TERDAMPAK]")) { mode = 3; continue; }
+
+        // PARSING 1: Mengolah teks menjadi Binary Search Tree
+        if (mode == 1) {
+            int id_angka, sp;
+            char nama[100];
+            // Potong huruf 'P' lalu ambil angka, nama, dan SP
+            if (sscanf(line, "P%d,%[^,],%d", &id_angka, nama, &sp) == 3) {
+                *rootBST = insertProfession(*rootBST, id_angka, nama, sp);
+            }
+        } 
