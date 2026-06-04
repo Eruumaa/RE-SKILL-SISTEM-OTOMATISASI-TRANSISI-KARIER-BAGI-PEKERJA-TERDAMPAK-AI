@@ -52,3 +52,14 @@ void loadDataToSystem(P_Node* rootBST, GraphPtr graph) {
                 *rootBST = insertProfession(*rootBST, id_angka, nama, sp);
             }
         } 
+
+          // PARSING 2: Mengolah teks menjadi Graph & Edge (Prasyarat)
+        else if (mode == 2) {
+            char tempLine[256];
+            strcpy(tempLine, line);
+            
+            // Pisahkan teks berdasarkan koma
+            char *token_id = strtok(tempLine, ",");
+            char *token_nama = strtok(NULL, ",");
+            char *token_sp = strtok(NULL, ",");
+            char *token_syarat = strtok(NULL, ",");
