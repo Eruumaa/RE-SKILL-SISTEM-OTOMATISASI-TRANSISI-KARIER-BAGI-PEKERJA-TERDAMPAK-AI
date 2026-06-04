@@ -13,14 +13,28 @@ void clearScreen() {
 
 void printLogo() {
     printf(CYAN BOLD);
-    printf("  __  __          __ _  ___ _     _     \n");
-    printf(" |  _ \\| _|        / __| |/ / _| |   | |    \n");
-    printf(" | |) |  _|   __ | (_ | ' / | || |   | |    \n");
-    printf(" |  _ <| |_ |__| \\_ \\| . \\ | || |_| |__ \n");
-    printf(" || \\\\__|        |_/|\\\\_|_|__|\n");
+    printf("  ____  _____          _____ _  _____ _     _     \n");
+    printf(" |  _ \\| ____|        / ____| |/ /_ _| |   | |    \n");
+    printf(" | |_) |  _|   _____ | (___ | ' / | || |   | |    \n");
+    printf(" |  _ <| |___ |_____| \\___ \\| . \\ | || |___| |___ \n");
+    printf(" |_| \\_\\_____|        |_____/_|\\_\\___|_____|_____|\n");
     printf(RESET);
     printf(YELLOW "  Sistem Otomatisasi Transisi Karier Terdampak AI \n" RESET);
     printf("====================================================\n\n");
+}
+
+void insertBalancedBST(P_Node* root, tempProfesi arr[], int start, int end) {
+    if (start > end) {
+        return;
+    }
+
+    int mid = (start + end) / 2;
+
+    *root = insertProfession (*root, arr[mid].id, arr[mid].nama, arr[mid].sp);
+
+    insertBalancedBST (root, arr, start, mid - 1);
+
+    insertBalancedBST (root, arr, mid + 1, end);
 }
 
 void loadDataToSystem(P_Node* rootBST, GraphPtr graph) {
@@ -31,6 +45,10 @@ void loadDataToSystem(P_Node* rootBST, GraphPtr graph) {
     }
     char line[256];
     int mode = 0; // 1 = Profesi Target, 2 = Kursus Keterampilan
+
+    // Penyimpanan data profesi sementara dalam array
+    tempProfesi arrayProfesi [250];
+    int jumlahProfesi = 0;
 
     while (fgets(line, sizeof(line), file)) {
         // Hapus karakter 'enter' (Linux/Windows) di akhir baris
@@ -49,11 +67,16 @@ void loadDataToSystem(P_Node* rootBST, GraphPtr graph) {
             char nama[100];
             // Potong huruf 'P' lalu ambil angka, nama, dan SP
             if (sscanf(line, "P%d,%[^,],%d", &id_angka, nama, &sp) == 3) {
-                *rootBST = insertProfession(*rootBST, id_angka, nama, sp);
+                arrayProfesi[jumlahProfesi].id = id_angka;
+                
+                strcpy(arrayProfesi[jumlahProfesi].nama, nama);
+                
+                arrayProfesi[jumlahProfesi].sp = sp;
+                jumlahProfesi++;
             }
         } 
 
-          // PARSING 2: Mengolah teks menjadi Graph & Edge (Prasyarat)
+        // PARSING 2: Mengolah teks menjadi Graph & Edge
         else if (mode == 2) {
             char tempLine[256];
             strcpy(tempLine, line);
@@ -84,4 +107,9 @@ void loadDataToSystem(P_Node* rootBST, GraphPtr graph) {
         }
     }
     fclose(file);
+
+    // Setelah file data dibaca bagi dan belah array profesi sehingga BST seimbang
+    if (jumlahProfesi > 0) {
+        insertBalancedBST(rootBST, arrayProfesi, 0, jumlahProfesi - 1);
+    }
 }

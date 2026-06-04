@@ -1,8 +1,15 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "DSA/bst.h"
-#include "DSA/graph.h"
+#include "bst.h"
+#include "graph.h"
+
+// Struct untuk menampung data BST dari file data teks
+typedef struct {
+    int id;
+    int nama [150];
+    int sp;
+} tempProfesi;
 
 // Makro Warna ANSI
 #define RESET   "\033[0m"
