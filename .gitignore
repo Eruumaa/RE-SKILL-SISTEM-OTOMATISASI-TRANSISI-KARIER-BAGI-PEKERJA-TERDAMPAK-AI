@@ -1,5 +1,6 @@
 # Mengabaikan semua folder debug dSYM (MAC)
 *.dSYM/
+*.DS_Store
 
 # Mengabaikan file biner hasil kompilasi (MAC)
 program
