@@ -63,3 +63,25 @@ void loadDataToSystem(P_Node* rootBST, GraphPtr graph) {
             char *token_nama = strtok(NULL, ",");
             char *token_sp = strtok(NULL, ",");
             char *token_syarat = strtok(NULL, ",");
+
+             if (token_id && token_nama && token_sp && token_syarat) {
+                int id = atoi(token_id);
+                int sp = atoi(token_sp);
+                
+                // Tambahkan node kursus ke Graph
+                addCourse(graph, id, id, token_nama, sp);
+                
+                // Jika syaratnya BUKAN "NONE", pecah berdasarkan titik koma ';'
+                if (strcmp(token_syarat, "NONE") != 0) {
+                    char *syarat = strtok(token_syarat, ";");
+                    while (syarat != NULL) {
+                        int id_syarat = atoi(syarat);
+                        addEdge(graph, id_syarat, id); // Sambungkan edge
+                        syarat = strtok(NULL, ";");
+                    }
+                }
+            }
+        }
+    }
+    fclose(file);
+}
