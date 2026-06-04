@@ -3,6 +3,8 @@
 #include <string.h>
 #include "utils.h"
 
+
+// Fungsi untuk clearscreen pada terminal
 void clearScreen() {
     #ifdef _WIN32
         system("cls");
@@ -11,6 +13,7 @@ void clearScreen() {
     #endif
 }
 
+// Fungsi logo memakai ANSI-C Art
 void printLogo() {
     printf(CYAN BOLD);
     printf("  ____  _____          _____ _  _____ _     _     \n");
@@ -23,20 +26,25 @@ void printLogo() {
     printf("====================================================\n\n");
 }
 
+// Fungsi untuk membuat BST seimbang dari array terurut secara rekursif 
 void insertBalancedBST(P_Node* root, tempProfesi arr[], int start, int end) {
     if (start > end) {
         return;
     }
-
+    // Mencari elemen tengah untuk dijadikan root atau parent nya
     int mid = (start + end) / 2;
 
+    // Memasukkan nilai tengah kedalam BST memakai fungsi insertProfession
     *root = insertProfession (*root, arr[mid].id, arr[mid].nama, arr[mid].sp);
 
+    // Mengulangi proses yang sama untuk membelah bagian kiri array
     insertBalancedBST (root, arr, start, mid - 1);
-
+    
+    // Mengulangi proses yang sama untuk membelah bagian kanan array
     insertBalancedBST (root, arr, mid + 1, end);
 }
 
+// Fungsi untuk membaca file data
 void loadDataToSystem(P_Node* rootBST, GraphPtr graph) {
     FILE *file = fopen("Data/datasp.txt", "r");
     if (file == NULL) {

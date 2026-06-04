@@ -1,42 +1,20 @@
 #include "bst.h"
 #include "graph.h"
 #include "maxheap.h"
+#include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define RESET   "\033[0m"
-#define BOLD    "\033[1m"
-#define RED     "\033[31m"
-#define GREEN   "\033[32m"
-#define YELLOW  "\033[33m"
-#define BLUE    "\033[34m"
-#define MAGENTA "\033[35m"
-#define CYAN    "\033[36m"
-
-void clearScreen() {
-    #ifdef _WIN32
-        system("cls");
-    #else
-        system("clear");
-    #endif
-}
-
-void printLogo() {
-    printf(CYAN BOLD);
-    printf("  ____  _____          _____ _  _____ _     _     \n");
-    printf(" |  _ \\| ____|        / ____| |/ /_ _| |   | |    \n");
-    printf(" | |_) |  _|   _____ | (___ | ' / | || |   | |    \n");
-    printf(" |  _ <| |___ |_____| \\___ \\| . \\ | || |___| |___ \n");
-    printf(" |_| \\_\\_____|        |_____/_|\\_\\___|_____|_____|\n");
-    printf(RESET);
-    printf(YELLOW "  Sistem Otomatisasi Transisi Karier Terdampak AI \n" RESET);
-    printf("====================================================\n\n");
-}
-
 int main() {
+    // Inisialisasi Struktur data inti
+    P_Node rootBST = NULL;
+    GraphPtr graph = createGraph(TOTALKURSUS);
+
+    // Memuat semua data ke memori langsung
+    loadDataToSystem(&rootBST, graph); 
+
     int pilihan;
-    
     do {
         clearScreen();
         printLogo();
@@ -48,29 +26,38 @@ int main() {
         printf("4. " RED "Keluar" RESET "\n\n");
         
         printf("Masukkan pilihan Anda [1-4]: ");
-        scanf("%d", &pilihan);
+        if (scanf("%d", &pilihan) != 1) {
+            printf("Input harus angka\n");
+            while (getchar() != '\n');
+            continue;
+        }
         
         switch(pilihan) {
+            // Opsi 1 Menampilkan Daftar profesi yang tersedia dari data
             case 1:
                 clearScreen();
-                printf(BLUE BOLD "=== DAFTAR PROFESI (TRAVERSAL BST) ===\n\n" RESET);
+                printf(BLUE BOLD "=== DAFTAR PROFESI ===\n\n" RESET);
                 printf("- Spesialis QA Software (95 SP)\n");
                 printf("- Manajer Proyek Digital (110 SP)\n");
                 printf("- Analis Data Junior (100 SP)\n\n");
                 printf(YELLOW "[!] Fitur struktur data BST akan diintegrasikan di sini.\n" RESET);
-                
-                printf("\nTekan Enter untuk kembali...");
-                getchar();
+                if (rootBST != NULL) {
+                    printInOrder(rootBST);
+                } else {
+                    printf (RED "Data basis profesi kosong atau gagal dimuat\n" RESET);
+                }
+                printf ("\nTekan enter untuk kembali ke menu utama");
                 getchar(); 
+                getchar();
                 break;
                 
             case 2:
                 clearScreen();
-                printf(GREEN BOLD "=== DAFTAR KURSUS (ADJACENCY LIST GRAPH) ===\n\n" RESET);
-                printf("[0] Literasi Data & Spreadsheet (25 SP) -> Lanjut ke: [2]\n");
-                printf("[1] Logika Pemrograman Dasar (20 SP) -> Lanjut ke: [2]\n");
-                printf("[2] Visualisasi Data Bisnis (25 SP) -> Syarat: [0], [1]\n\n");
-                printf(YELLOW "[!] Fitur struktur data Graph akan diintegrasikan di sini.\n" RESET);
+                if (graph != NULL) {
+                    displayGraph(graph);
+                } else {
+                    printf (RED "Data basis graf kosong\n" RESET);
+                }
                 
                 printf("\nTekan Enter untuk kembali...");
                 getchar();
@@ -81,7 +68,7 @@ int main() {
                 clearScreen();
                 int poinBawaan = 0;
                 int jawab;
-                char profesi[50];
+                char profesi[150];
                 
                 printf(MAGENTA BOLD "=== KALKULATOR TRANSISI KARIER ===\n" RESET);
                 printf(CYAN "Tahap 1: Asesmen Fundamental Era AI\n" RESET);
@@ -112,42 +99,92 @@ int main() {
                 printf(CYAN "Tahap 2: Pemilihan Profesi Target\n" RESET);
                 printf("Ketik profesi target (contoh: Analis): ");
                 getchar();
-                fgets(profesi, 50, stdin);
-                profesi[strcspn(profesi, "\n")] = 0;
-                
-                // Asumsi target = 100 SP
-                int targetSP = 100;
-                int skillGap = targetSP - poinBawaan;
-                
-                printf("\n[Sistem Menganalisis...]\n");
-                printf("Target Profesi : %s (" GREEN "100 SP" RESET ")\n", profesi);
-                printf("Skill Gap Anda : " RED "%d SP\n\n" RESET, skillGap);
-                
-                if (skillGap <= 0) {
-                    printf(GREEN BOLD "Keterampilan Anda sudah memenuhi syarat untuk profesi ini!\n" RESET);
-                } else {
-                    printf(CYAN "Tahap 3: Optimasi Jalur Reskilling (Max-Heap & Greedy)\n" RESET);
-                    printf("Menyusun urutan kursus untuk menutupi %d SP...\n\n", skillGap);
-                    
-                    // Dummy Output Learning Path
-                    printf(BOLD "Learning Path Optimal:\n" RESET);
-                    printf("1. Pengantar Literasi Data & Spreadsheet (" GREEN "+25 SP" RESET ")\n");
-                    printf("2. Logika Pemrograman Dasar (" GREEN "+20 SP" RESET ")\n");
-                    printf("3. Visualisasi Data untuk Bisnis (" GREEN "+25 SP" RESET ")\n\n");
-                    
-                    printf(GREEN BOLD "[STATUS] Skill Gap Terpenuhi! Anda siap transisi karier.\n" RESET);
+                scanf(" %[^\n]", profesi);
+
+                // Mencari data profesi di BST
+                P_Node target = searchProfessionByName(rootBST, profesi);
+                if (target == NULL) {
+                    printf (RED "\n[!] Maaf, profesi '%s' tidak ditemukan dalam sistem database kami.\n" RESET, profesi);
+                    printf ("Pastikan huruf besar dan kecil sesuai dengan data. Tekan enter...");
+                    getchar();
+                    break;
                 }
-                
-                printf("\nTekan Enter untuk kembali ke Menu Utama...");
+
+                int skillGap = target->required_sp - poinBawaan;
+
+                printf ("\n [Sistem Menganasilis...]\n");
+                printf ("Target Profesi : %S (" GREEN "%d SP" RESET ") \n ", target->name, target->required_sp);
+
+                if (skillGap <= 0 ) {
+                    printf ("Skill Gap kamu : " GREEN "0 SP\n\n" RESET ")\n", target->name, target->required_sp);
+                } else {
+                    printf("Skill Gap Anda : " RED "%d SP\n\n" RESET, skillGap);
+                    printf(CYAN "Tahap 3: Optimasi Jalur Reskilling (Kahn's + Max-Heap + Greedy Loop)\n" RESET);
+                    printf("Menyusun urutan kursus prioritas terbalik untuk menutupi %d SP...\n\n", skillGap);
+                    
+                    int current_in_degree[TOTALKURSUS];
+                    int is_entered_heap[TOTALKURSUS]; 
+                    
+                    // Melakukan copy in-degree agar graf utama tidak rusak atau terputus permanen
+                    for (int i = 0; i < TOTALKURSUS; i++) {
+                        current_in_degree[i] = graph->in_degree[i];
+                        is_entered_heap[i] = 0;
+                    }
+                    // Membuat kapasistas struct Maxheap dinamis sebanyak jumlah kursus
+                    MaxheapPtr heap = createMaxHeap(TOTALKURSUS);
+
+                    // Memasukkan semua kursus dasar dengan in degree awal 0 kedalam Max-Heap
+                    for (int i = 0; i < TOTALKURSUS; i++) {
+                        if (current_in_degree[i] == 0) {
+                            insertHeap(heap, i, graph->courses[i].sp_value);
+                            is_entered_heap[i] = 1;
+                        }
+                    }
+                    printf (BOLD "Learning Path Rekomendasi Optimal:\n" RESET);
+                    int step = 1;
+
+                    // Mengekstrak prioritas teratas agar SP terpenuhi
+                    while (skillGap > 0 && !isEmptyHeap(heap)) {
+                        HeapElement kursusTerbaik = extractMax(heap);
+                        int id = kursusTerbaik.course_id;
+
+                        printf (" %d. %s (" GREEN "+%d SP" RESET ")\n", step++, graph->courses[id].course_name, kursusTerbaik.sp_value);
+                        skillGap -= kursusTerbaik.sp_value;
+
+                        CourseNPtr neighborNode = graph->adjList[id];
+                        while (neighborNode != NULL) {
+                            int neighborId = neighborNode->course_id;
+                            current_in_degree[neighborId]--;
+
+                            // Jika in degree = 0 maka masuk ke Max-Heap
+                            if (current_in_degree[neighborId] == 0 && !is_entered_heap[neighborId]) {
+                                insertHeap(heap, neighborId, graph->courses[neighborId].sp_value);
+                            }
+                            neighborNode = neighborNode->next;
+                        }
+                    }
+                    if (skillGap <= 0) {
+                        printf(GREEN BOLD "\n[STATUS] Sukses! Skill Gap terpenuhi. Rencana transisi karier Anda valid.\n" RESET);
+                    } else {
+                            printf(RED BOLD "\n[STATUS] Perhatian: Jalur terhenti. Pilihan kurikulum tidak mencukupi target celah poin.\n" RESET);
+                    }
+                    freeMaxHeap(heap);
+                }
+                printf ("\n Tekan enter untuk kembali ke menu utama...");
                 getchar();
                 break;
             }
-                
+            
+            // Opsi 4 Exit program dengan memfreekan memori
             case 4:
                 clearScreen();
                 printLogo();
                 printf(GREEN BOLD "\nTerima kasih telah menggunakan sistem Re-Skill!\n" RESET);
                 printf("Semoga transisi karier Anda sukses.\n\n");
+                printf("Membebaskan alokasi memori internal dari sistem...\n");
+                freeBST(rootBST);
+                freeGraph(graph);
+                printf("Selesai. Selamat bertransisi karier!\n\n");
                 break;
                 
             default:

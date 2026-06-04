@@ -20,6 +20,7 @@ typedef struct {
 #define BLUE    "\033[34m"
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
+#define TOTALKURSUS 26
 
 // Prototipe Fungsi Utility
 void clearScreen();
