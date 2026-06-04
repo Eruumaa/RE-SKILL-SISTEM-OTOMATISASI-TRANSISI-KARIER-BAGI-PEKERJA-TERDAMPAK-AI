@@ -10,3 +10,15 @@ void clearScreen() {
         system("clear");
     #endif
 }
+
+void printLogo() {
+    printf(CYAN BOLD);
+    printf("  __  __          __ _  ___ _     _     \n");
+    printf(" |  _ \\| _|        / __| |/ / _| |   | |    \n");
+    printf(" | |) |  _|   __ | (_ | ' / | || |   | |    \n");
+    printf(" |  _ <| |_ |__| \\_ \\| . \\ | || |_| |__ \n");
+    printf(" || \\\\__|        |_/|\\\\_|_|__|\n");
+    printf(RESET);
+    printf(YELLOW "  Sistem Otomatisasi Transisi Karier Terdampak AI \n" RESET);
+    printf("====================================================\n\n");
+}
