@@ -1,7 +1,7 @@
-#include "bst.h"
-#include "graph.h"
-#include "maxheap.h"
-#include "utils.h"
+#include "DSA/bst.h"
+#include "DSA/graph.h"
+#include "DSA/maxheap.h"
+#include "utils/utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,23 +9,24 @@
 int main() {
     // Inisialisasi Struktur data inti
     P_Node rootBST = NULL;
-    GraphPtr graph = createGraph(TOTALKURSUS);
+    GraphPtr graph = NULL;
 
     // Memuat semua data ke memori langsung
-    loadDataToSystem(&rootBST, graph); 
-
+    int totalKursus = loadDataToSystem(&rootBST, &graph);
     int pilihan;
+    int poinBawaan = 0;
+    char jawab;
     do {
         clearScreen();
         printLogo();
         
         printf(BOLD "MENU UTAMA:\n" RESET);
-        printf("1. " BLUE "Lihat Daftar Profesi (BST)" RESET "\n");
-        printf("2. " GREEN "Lihat Daftar Kursus & Prasyarat (Graph)" RESET "\n");
-        printf("3. " MAGENTA "Kalkulator Transisi Karier (Reskilling)" RESET "\n");
+        printf("1. " BLUE "Lihat Daftar Profesi" RESET "\n");
+        printf("2. " GREEN "Lihat Daftar Kursus & Prasyarat" RESET "\n");
+        printf("3. " MAGENTA "Kalkulator Transisi Karier" RESET "\n");
         printf("4. " RED "Keluar" RESET "\n\n");
         
-        printf("Masukkan pilihan Anda [1-4]: ");
+        printf("Masukkan pilihan Kamu [1-4]: ");
         if (scanf("%d", &pilihan) != 1) {
             printf("Input harus angka\n");
             while (getchar() != '\n');
@@ -36,105 +37,160 @@ int main() {
             // Opsi 1 Menampilkan Daftar profesi yang tersedia dari data
             case 1:
                 clearScreen();
-                printf(BLUE BOLD "=== DAFTAR PROFESI ===\n\n" RESET);
-                printf("- Spesialis QA Software (95 SP)\n");
-                printf("- Manajer Proyek Digital (110 SP)\n");
-                printf("- Analis Data Junior (100 SP)\n\n");
-                printf(YELLOW "[!] Fitur struktur data BST akan diintegrasikan di sini.\n" RESET);
+                printf(BLUE BOLD "===================================== DAFTAR PROFESI =====================================\n" RESET);
+                printf("==========================================================================================\n");
+                printf("| ID   | Nama Profesi Target                                               |Skill Points |\n");
+                printf("==========================================================================================\n");
                 if (rootBST != NULL) {
                     printInOrder(rootBST);
                 } else {
                     printf (RED "Data basis profesi kosong atau gagal dimuat\n" RESET);
                 }
-                printf ("\nTekan enter untuk kembali ke menu utama");
+
+                printf("==========================================================================================\n");
+
+                printf ("\nTekan enter untuk kembali ke menu utama...");
                 getchar(); 
                 getchar();
                 break;
-                
+            
+            // Opsi 2 Daftar list course yang tersedia
             case 2:
                 clearScreen();
+                printf(BLUE BOLD "========================================= COURSE =========================================\n" RESET);
                 if (graph != NULL) {
                     displayGraph(graph);
                 } else {
                     printf (RED "Data basis graf kosong\n" RESET);
                 }
+
+                printf("==========================================================================================\n");
                 
                 printf("\nTekan Enter untuk kembali...");
                 getchar();
                 getchar();
                 break;
-                
+            // Opsi 3 Kalkulator Transisi Karier  
             case 3: {
                 clearScreen();
-                int poinBawaan = 0;
-                int jawab;
-                char profesi[150];
                 
-                printf(MAGENTA BOLD "=== KALKULATOR TRANSISI KARIER ===\n" RESET);
+                printf(MAGENTA BOLD "============= KALKULATOR TRANSISI KARIER =============\n" RESET);
                 printf(CYAN "Tahap 1: Asesmen Fundamental Era AI\n" RESET);
-                printf("Jawab dengan angka " GREEN "[1] untuk YA" RESET " atau " RED "[0] untuk TIDAK" RESET ".\n\n");
+                printf("Jawab dengan huruf " GREEN "[Y] untuk YA" RESET " atau " RED "[N] untuk TIDAK" RESET ".\n\n");
                 
-                printf("1. Mudah beradaptasi dengan aplikasi/software baru? [1/0]: ");
-                scanf("%d", &jawab);
-                if(jawab == 1) poinBawaan += 10;
-                
-                printf("2. Terbiasa membaca data dari tabel/grafik laporan? [1/0]: ");
-                scanf("%d", &jawab);
-                if(jawab == 1) poinBawaan += 10;
-                
-                printf("3. Terbiasa memecah masalah rumit jadi langkah kecil? [1/0]: ");
-                scanf("%d", &jawab);
-                if(jawab == 1) poinBawaan += 15;
-                
-                printf("4. Pernah menggunakan AI (ChatGPT/Gemini) untuk bekerja? [1/0]: ");
-                scanf("%d", &jawab);
-                if(jawab == 1) poinBawaan += 15;
-                
-                printf("5. Berpengalaman dalam negosiasi/pelayanan manusia? [1/0]: ");
-                scanf("%d", &jawab);
-                if(jawab == 1) poinBawaan += 10;
-                
-                printf("\n" YELLOW "-> Modal Skill Points (SP) Anda: %d SP\n\n" RESET, poinBawaan);
-                
-                printf(CYAN "Tahap 2: Pemilihan Profesi Target\n" RESET);
-                printf("Ketik profesi target (contoh: Analis): ");
-                getchar();
-                scanf(" %[^\n]", profesi);
+                // Menyimpan pertanyaan ke dalam Array
+                const char *pertanyaan[5] = {
+                    "1. Mudah beradaptasi dengan aplikasi/software baru? [Y/N]: ",
+                    "2. Terbiasa membaca data dari tabel/grafik laporan? [Y/N]: ",
+                    "3. Terbiasa memecah masalah rumit jadi langkah kecil? [Y/N]: ",
+                    "4. Pernah menggunakan AI (ChatGPT/Gemini/Claude) untuk bekerja? [Y/N]: ",
+                    "5. Berpengalaman dalam negosiasi/pelayanan manusia? [Y/N]: "
+                };
 
-                // Mencari data profesi di BST
-                P_Node target = searchProfessionByName(rootBST, profesi);
-                if (target == NULL) {
-                    printf (RED "\n[!] Maaf, profesi '%s' tidak ditemukan dalam sistem database kami.\n" RESET, profesi);
-                    printf ("Pastikan huruf besar dan kecil sesuai dengan data. Tekan enter...");
-                    getchar();
-                    break;
+                // Looping untuk menanyakan 5 soal
+                for (int i = 0; i < 5; i++) {
+                    // Looping yang tidak akan lanjut sebelum Y/N
+                    while (1) {
+                        printf("%s", pertanyaan[i]);
+                        scanf(" %c", &jawab);
+
+                        while(getchar() != '\n'); 
+
+                        // Validasi Input user
+                        if (jawab == 'Y' || jawab == 'y') {
+                            poinBawaan += 10;
+                            break;
+                        } else if (jawab == 'N' || jawab == 'n') {
+                            break;
+                        } else {
+                            // Jika input bukan y/n, program akan memperingati user dan mengulang soal yang sama
+                            printf(RED "    [!] Input tidak valid! Hanya menerima huruf Y atau N.\n" RESET);
+                        }
+                    }
                 }
 
+                printf("\n" YELLOW "-> Modal Skill Points (SP) Anda: %d SP\n\n" RESET, poinBawaan);
+                
+                // Pemilihan profesi target
+                printf(CYAN "Tahap 2: Pemilihan Profesi Target\n" RESET);
+                
+                char careerList;
+
+                while (1) {
+                    printf("Apakah Anda ingin menampilkan tabel daftar ID Profesi terlebih dahulu? [Y/N]: ");
+                    scanf(" %c", &careerList);
+                    while(getchar() != '\n');
+
+                    if (careerList == 'Y' || careerList == 'y' || careerList == 'N' || careerList == 'n') {
+                        break;
+                    } else {
+                        printf(RED "    [!] Input tidak valid! Hanya menerima huruf Y atau N.\n" RESET);
+                    }
+                }
+                
+                if (careerList == 'Y' || careerList== 'y') {
+                    printf("\n==========================================================================================\n");
+                    printf("| ID   | Nama Profesi Target                                               | Syarat Poin |\n");
+                    printf("==========================================================================================\n");
+                    
+                    if (rootBST != NULL) {
+                        printInOrder(rootBST);
+                    } else {
+                        printf("| " RED "Data basis profesi kosong atau gagal dimuat!" RESET "                                          |\n");
+                    }
+                    
+                    printf("==========================================================================================\n\n");
+                }
+                
+                int idTarget;
+                P_Node target = NULL;
+
+                while (1) {
+                    printf("Masukkan " YELLOW "ID Profesi" RESET " target Anda (Contoh: 67): ");
+                    
+                    // Cek jika input gagal dibaca sebagai angka
+                    if (scanf("%d", &idTarget) != 1) {
+                        printf(RED "    [!] Input tidak valid! Masukkan format angka (Contoh: 67).\n" RESET);
+                        while(getchar() != '\n');
+                        continue;
+                    }
+                    
+                    // Melakukan pencarian data profesi menggunakan fungsi ID 
+                    target = searchProfession(rootBST, idTarget);
+                    
+                    // Cek jika angka ID tidak ada
+                    if (target == NULL) {
+                        printf(RED "    [!] Maaf, profesi dengan ID '%d' tidak ditemukan di sistem. Silakan coba lagi.\n" RESET, idTarget);
+                        continue; 
+                    }
+                    break; 
+                }
                 int skillGap = target->required_sp - poinBawaan;
 
-                printf ("\n [Sistem Menganasilis...]\n");
-                printf ("Target Profesi : %S (" GREEN "%d SP" RESET ") \n ", target->name, target->required_sp);
+                printf ("\n[Sistem Menganasilis...]\n");
+                printf ("Target Profesi : %s (" GREEN "%d SP" RESET ")\n", target->name, target->required_sp);
 
                 if (skillGap <= 0 ) {
-                    printf ("Skill Gap kamu : " GREEN "0 SP\n\n" RESET ")\n", target->name, target->required_sp);
+                    printf ("Skill Gap Kamu : " GREEN "0 SP\n\n" RESET);
+                    printf (GREEN BOLD "Keterampilan Anda saat ini sudah memenuhi syarat mutlak untuk profesi ini!\n" RESET);
                 } else {
-                    printf("Skill Gap Anda : " RED "%d SP\n\n" RESET, skillGap);
-                    printf(CYAN "Tahap 3: Optimasi Jalur Reskilling (Kahn's + Max-Heap + Greedy Loop)\n" RESET);
-                    printf("Menyusun urutan kursus prioritas terbalik untuk menutupi %d SP...\n\n", skillGap);
+                    printf ("Skill Gap Kamu : " RED "%d SP\n\n" RESET, skillGap);
+                    printf (CYAN "Tahap 3: Optimasi Jalur Reskilling\n" RESET);
+                    printf ("Menyusun urutan kursus prioritas terbalik untuk menutupi %d SP...\n\n", skillGap);
                     
-                    int current_in_degree[TOTALKURSUS];
-                    int is_entered_heap[TOTALKURSUS]; 
+                    int *current_in_degree = (int*)malloc(totalKursus * sizeof(int));
+                    int *is_entered_heap = (int*)malloc(totalKursus * sizeof(int));
                     
                     // Melakukan copy in-degree agar graf utama tidak rusak atau terputus permanen
-                    for (int i = 0; i < TOTALKURSUS; i++) {
+                    for (int i = 0; i < totalKursus; i++) {
                         current_in_degree[i] = graph->in_degree[i];
                         is_entered_heap[i] = 0;
                     }
                     // Membuat kapasistas struct Maxheap dinamis sebanyak jumlah kursus
-                    MaxheapPtr heap = createMaxHeap(TOTALKURSUS);
+                    MaxheapPtr heap = createMaxHeap(totalKursus);
 
                     // Memasukkan semua kursus dasar dengan in degree awal 0 kedalam Max-Heap
-                    for (int i = 0; i < TOTALKURSUS; i++) {
+                    for (int i = 0; i < totalKursus; i++) {
                         if (current_in_degree[i] == 0) {
                             insertHeap(heap, i, graph->courses[i].sp_value);
                             is_entered_heap[i] = 1;
@@ -172,6 +228,7 @@ int main() {
                 }
                 printf ("\n Tekan enter untuk kembali ke menu utama...");
                 getchar();
+                getchar();
                 break;
             }
             
@@ -180,7 +237,7 @@ int main() {
                 clearScreen();
                 printLogo();
                 printf(GREEN BOLD "\nTerima kasih telah menggunakan sistem Re-Skill!\n" RESET);
-                printf("Semoga transisi karier Anda sukses.\n\n");
+                printf("Semoga transisi karier Anda sukses.\n");
                 printf("Membebaskan alokasi memori internal dari sistem...\n");
                 freeBST(rootBST);
                 freeGraph(graph);

@@ -1,38 +1,37 @@
 #ifndef MAXHEAP_H
 #define MAXHEAP_H
 
-// Struktur Elemen Kursus di dalam Heap (Menyimpan ID Kursus dan Nilai Skill Points)
-typedef HeapElement *HeapelementPtr;
-typedef struct HeapElement
-{
+// Struct Elemen Kursus di dalam Heap yang menyimpan ID kursus dan nilai skill point
+typedef struct HeapElement *HeapelementPtr;
+typedef struct HeapElement{
     int course_id; // ID unik dari kursus
-    int sp_value;  // Poin yang diperoleh (Kunci prioritas Max-Heap)
+    int sp_value;  // Poin yang diperoleh
 } HeapElement;
+// Alias pointer
 
-// Struktur data utama Max-Heap (Priority Queue)
+// Struct data utama Max-Heap untuk Priority Queue
 typedef struct MaxHeap *MaxheapPtr;
-typedef struct MaxHeap
-{
+typedef struct MaxHeap {
     HeapelementPtr data; // Array dinamis untuk menyimpan elemen kursus
     int capacity;        // Kapasitas maksimum alokasi memori heap
     int size;            // Jumlah elemen aktif yang ada saat ini
 } MaxHeap;
 
 // Prototipe Fungsi Utilitas Indeks
-int parent(int idx);
-int leftChild(int idx);
-int rightChild(int idx);
+int parent (int );
+int leftChild (int );
+int rightChild (int );
 
 // Prototipe Fungsi Utama Max-Heap
-MaxheapPtr createMaxHeap(int capacity);
-void maxHeapify(MaxheapPtr heap, int idx);
-void insertHeap(MaxheapPtr heap, int course_id, int sp_value);
-HeapElement extractMax(MaxheapPtr heap);
-void freeMaxHeap(MaxheapPtr heap);
+MaxheapPtr createMaxHeap (int );
+HeapElement extractMax (MaxheapPtr );
+void maxHeapify (MaxheapPtr , int );
+void insertHeap (MaxheapPtr , int , int );
+void freeMaxHeap (MaxheapPtr );
 
-// Prototipe Pengembangan Khusus Ruang Lingkup Max-Heap
-int isEmptyHeap(MaxheapPtr heap);        // Cek apakah heap kosong (O(1))
-HeapelementPtr peekMax(MaxheapPtr heap); // Lihat elemen tertinggi tanpa menghapus (O(1))
-void printHeap(MaxheapPtr heap);         // Cetak data array heap untuk debugging (O(n))
+// Prototipe Pengembangan Khusus Max-Heap
+HeapElement peekMax (MaxheapPtr );     // Lihat elemen tertinggi tanpa menghapus dengan kompleksitas waktu (O(1))
+int isEmptyHeap (MaxheapPtr );        // Cek apakah heap kosong dengan kompleksitas waktu (O(1))
+void printHeap (MaxheapPtr );        // Cetak data array heap untuk debugging dengan kompleksitas waktu (O(n))
 
-#endif // MAXHEAP_H
+#endif

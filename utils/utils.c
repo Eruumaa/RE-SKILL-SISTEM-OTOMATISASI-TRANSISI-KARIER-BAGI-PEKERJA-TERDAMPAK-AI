@@ -1,7 +1,9 @@
+#include "../DSA/bst.h"
+#include "../DSA/graph.h"
+#include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "utils.h"
 
 
 // Fungsi untuk clearscreen pada terminal
@@ -27,7 +29,7 @@ void printLogo() {
 }
 
 // Fungsi untuk membuat BST seimbang dari array terurut secara rekursif 
-void insertBalancedBST(P_Node* root, tempProfesi arr[], int start, int end) {
+void insertBalancedBST (P_Node* root, tempProfesi arr[], int start, int end) {
     if (start > end) {
         return;
     }
@@ -45,51 +47,59 @@ void insertBalancedBST(P_Node* root, tempProfesi arr[], int start, int end) {
 }
 
 // Fungsi untuk membaca file data
-void loadDataToSystem(P_Node* rootBST, GraphPtr graph) {
+int loadDataToSystem (P_Node* rootBST, GraphPtr *graph) {
     FILE *file = fopen("Data/datasp.txt", "r");
     if (file == NULL) {
         printf(RED "[Error] Gagal memuat file Data/datasp.txt! Pastikan berada di folder yang benar.\n" RESET);
-        return;
+        return 0;
     }
     char line[256];
-    int mode = 0; // 1 = Profesi Target, 2 = Kursus Keterampilan
+    int mode = 0;
+    int countProfesi = 0;
+    int countKursus  = 0;
 
-    // Penyimpanan data profesi sementara dalam array
-    tempProfesi arrayProfesi [250];
-    int jumlahProfesi = 0;
-
-    while (fgets(line, sizeof(line), file)) {
-        // Hapus karakter 'enter' (Linux/Windows) di akhir baris
+while (fgets(line, sizeof(line), file)) {
         line[strcspn(line, "\r\n")] = 0; 
-        
-        if (strlen(line) == 0) continue; // Skip baris kosong
+        if (strlen(line) == 0) continue; 
 
-        // Cek label header untuk mengubah mode parsing
         if (strstr(line, "[PROFESI_TARGET]")) { mode = 1; continue; }
         if (strstr(line, "[KURSUS_KETERAMPILAN]")) { mode = 2; continue; }
         if (strstr(line, "[PROFESI_TERDAMPAK]")) { mode = 3; continue; }
 
-        // PARSING 1: Mengolah teks menjadi Binary Search Tree
+        if (mode == 1) countProfesi++;
+        else if (mode == 2) countKursus++;
+    }
+
+    tempProfesi *arrayProfesi = (tempProfesi*)malloc(countProfesi * sizeof(tempProfesi));
+    *graph = createGraph(countKursus); // Buat graph dengan ukuran akurat
+
+    // Membaca & Memasukkan Data
+    rewind(file);
+    mode = 0;
+    int idxProfesi = 0;
+
+    while (fgets(line, sizeof(line), file)) {
+        line[strcspn(line, "\r\n")] = 0; 
+        if (strlen(line) == 0) continue; 
+
+        if (strstr(line, "[PROFESI_TARGET]")) { mode = 1; continue; }
+        if (strstr(line, "[KURSUS_KETERAMPILAN]")) { mode = 2; continue; }
+        if (strstr(line, "[PROFESI_TERDAMPAK]")) { mode = 3; continue; }
+
         if (mode == 1) {
             int id_angka, sp;
             char nama[100];
-            // Potong huruf 'P' lalu ambil angka, nama, dan SP
             if (sscanf(line, "P%d,%[^,],%d", &id_angka, nama, &sp) == 3) {
-                arrayProfesi[jumlahProfesi].id = id_angka;
-                
-                strcpy(arrayProfesi[jumlahProfesi].nama, nama);
-                
-                arrayProfesi[jumlahProfesi].sp = sp;
-                jumlahProfesi++;
+                arrayProfesi[idxProfesi].id = id_angka;
+                strcpy(arrayProfesi[idxProfesi].nama, nama);
+                arrayProfesi[idxProfesi].sp = sp;
+                idxProfesi++;
             }
         } 
-
-        // PARSING 2: Mengolah teks menjadi Graph & Edge
         else if (mode == 2) {
             char tempLine[256];
             strcpy(tempLine, line);
             
-            // Pisahkan teks berdasarkan koma
             char *token_id = strtok(tempLine, ",");
             char *token_nama = strtok(NULL, ",");
             char *token_sp = strtok(NULL, ",");
@@ -99,15 +109,14 @@ void loadDataToSystem(P_Node* rootBST, GraphPtr graph) {
                 int id = atoi(token_id);
                 int sp = atoi(token_sp);
                 
-                // Tambahkan node kursus ke Graph
-                addCourse(graph, id, id, token_nama, sp);
+                // graph memakai pointer (*graph)
+                addCourse(*graph, id, id, token_nama, sp);
                 
-                // Jika syaratnya BUKAN "NONE", pecah berdasarkan titik koma ';'
                 if (strcmp(token_syarat, "NONE") != 0) {
                     char *syarat = strtok(token_syarat, ";");
                     while (syarat != NULL) {
                         int id_syarat = atoi(syarat);
-                        addEdge(graph, id_syarat, id); // Sambungkan edge
+                        addEdge(*graph, id_syarat, id); 
                         syarat = strtok(NULL, ";");
                     }
                 }
@@ -116,8 +125,14 @@ void loadDataToSystem(P_Node* rootBST, GraphPtr graph) {
     }
     fclose(file);
 
-    // Setelah file data dibaca bagi dan belah array profesi sehingga BST seimbang
-    if (jumlahProfesi > 0) {
-        insertBalancedBST(rootBST, arrayProfesi, 0, jumlahProfesi - 1);
+    // Seimbangkan BST
+    if (idxProfesi > 0) {
+        insertBalancedBST(rootBST, arrayProfesi, 0, idxProfesi - 1);
     }
+    
+    // [!] BEBASKAN ARRAY SEMENTARA (Mencegah Memory Leak)
+    free(arrayProfesi); 
+
+    // Kembalikan total kursus agar bisa dipakai di main.c
+    return countKursus; 
 }

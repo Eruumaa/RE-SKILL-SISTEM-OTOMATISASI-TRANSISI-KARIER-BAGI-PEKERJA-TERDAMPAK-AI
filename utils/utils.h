@@ -1,13 +1,10 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "bst.h"
-#include "graph.h"
-
 // Struct untuk menampung data BST dari file data teks
 typedef struct {
     int id;
-    int nama [150];
+    char nama [150];
     int sp;
 } tempProfesi;
 
@@ -20,11 +17,10 @@ typedef struct {
 #define BLUE    "\033[34m"
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
-#define TOTALKURSUS 26
 
 // Prototipe Fungsi Utility
 void clearScreen();
 void printLogo();
-void loadDataToSystem(P_Node* rootBST, GraphPtr graph);
+int loadDataToSystem (P_Node* , GraphPtr *);
 
 #endif // UTILS_H
